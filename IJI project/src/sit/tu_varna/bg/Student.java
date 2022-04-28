@@ -4,20 +4,64 @@ import java.util.ArrayList;
 
 public class Student extends Person{
     private String facultyNumber;
+    private int group;
     private int currentSemester;
-    private String course;
+    private String major;
     private ArrayList grades;
     private ArrayList disciplines;
 
+
+
 //constructor za suzdavane na Student samo s lichno i familno ime, kakto i takuv s 3 imena
-    public Student(String firstName,String lastName,String facultyNumber, String course) {
-        setName(firstName,lastName);
+
+    public Student(String facultyNumber,String major, int group,String name) {
+        //op1 = facultyNumber, op2 = Major(string),op3 = group, op4 = name
+        setName(name);
+        this.group = group;
         this.facultyNumber = facultyNumber;
-        this.course = course;
+        this.major = major;
     }
-    public Student(String firstName,String middleName,String lastName,String facultyNumber, String course) {
-        setName(firstName,middleName,lastName);
+
+    public String getFacultyNumber() {
+        return facultyNumber;
+    }
+
+    public void setFacultyNumber(String facultyNumber) {
         this.facultyNumber = facultyNumber;
-        this.course = course;
+    }
+
+    public int getGroup() {
+        return group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+    }
+
+    public int getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public void addGrade(Grade grade){
+        this.grades.add(grade);
+    }
+
+    public ArrayList getAllGrades(){
+        return this.grades;
+    }
+    public ArrayList getDisciplines(){
+        return this.disciplines;
     }
 }
