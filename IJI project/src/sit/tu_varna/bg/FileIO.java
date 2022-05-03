@@ -1,25 +1,48 @@
 package sit.tu_varna.bg;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
 
 public class FileIO {
 
-    public static void XMLStudentParser() {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    public static void XMLStudentWriter(Student s){
+        try {
+            FileOutputStream fos = new FileOutputStream(new File("Students/" + s.getFacultyNumber() + ".xml"));
+            XMLEncoder encoder = new XMLEncoder(fos);
+            encoder.writeObject(s);
+            encoder.close();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void XMLStudentParser(String pathname) {
+
+        try {
+            FileInputStream fis = new FileInputStream(new File(pathname));
+            XMLDecoder decoder = new XMLDecoder(fis);
+
+            Student s = (Student) decoder.readObject();
+            decoder.close();
+            fis.close();
+
+            System.out.println(s.toString());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+       /* DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document document = builder.parse(new File("Students/students.xml")); //REPLACE WITH 'pathname' VARIABLE!!!!!!!!
+            Document document = builder.parse(new File(pathname)); //REPLACE WITH 'pathname' VARIABLE!!!!!!!!
 
             document.getDocumentElement().normalize();
 
@@ -51,5 +74,7 @@ public class FileIO {
         } catch (SAXException e) {
             e.printStackTrace();
         }
+    }
+        */
     }
 }

@@ -13,6 +13,9 @@ public class Professor extends Person{
         this.disciplines = disciplines;
     }
 
+    public Professor() {
+    }
+
     @Override
     public String getName(){
         String name = this.title+" "+this.getName();
