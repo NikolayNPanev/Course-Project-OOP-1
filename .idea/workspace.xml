@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/DisciplineFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/FileIO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Grade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Course-Project-OOP-1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Course-Project-OOP-1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/FileIO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Professor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +66,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650317722829</updated>
-      <workItem from="1650317726621" duration="26360000" />
+      <workItem from="1650317726621" duration="27992000" />
+      <workItem from="1651580436622" duration="5837000" />
     </task>
     <servers />
   </component>
@@ -92,5 +84,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

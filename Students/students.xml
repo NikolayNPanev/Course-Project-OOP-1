@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+	<student name="Ivan">
+		<facultyNumber value="20621511"/>
+		<major value="SIT"/>
+	</student>
+	<student name="Gosho">
+		<facultyNumber value="20621512"/>
+		<major value="KST"/>
+	</student>
+</students>

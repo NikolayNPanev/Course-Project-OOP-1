@@ -2,8 +2,7 @@ package sit.tu_varna.bg;
 import java.io.*;
 import java.util.Scanner;
 
-import static sit.tu_varna.bg.FileIO.readPerson;
-import static sit.tu_varna.bg.FileIO.savePerson;
+
 
 public class Menu {
     public static void menu() throws Exception {
@@ -29,8 +28,6 @@ public class Menu {
             Student P = studentFactory(command[0], command[1], command[2], command[3], command[4]);
             P.toString();
             String filepath = "Students/"+P.getFacultyNumber() + ".student";
-            savePerson(filepath,P);
-            readPerson(filepath);
         }
         menu();
     }
