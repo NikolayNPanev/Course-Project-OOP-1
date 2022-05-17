@@ -11,6 +11,20 @@ public class Student extends Person{
 
 //constructor za suzdavane na Student samo s lichno i familno ime, kakto i takuv s 3 imena
 
+    public void Grade(Grade grade){
+        grades.add(grade);
+    }
+
+    public void showGrades(){
+        for (Grade grade:grades){
+            System.out.println(grade);
+        }
+    }
+
+    public List getGrades(){
+        return grades;
+    }
+
     public Student(String facultyNumber,Major major, int group,String name) {
         //op1 = facultyNumber, op2 = Major(string),op3 = group, op4 = name
         setName(name);
@@ -55,4 +69,8 @@ public class Student extends Person{
                 "  group: "+getGroup()+"\n" +
                 "}";
     }
-}
+
+
+
+    }
+

@@ -22,4 +22,5 @@ public abstract class Person implements Serializable {
     public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
+
 }
