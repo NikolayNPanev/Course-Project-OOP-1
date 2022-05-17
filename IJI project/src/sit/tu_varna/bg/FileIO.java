@@ -7,9 +7,23 @@ import java.io.*;
 
 public class FileIO {
 
+
+
+    //Save at default filepath
     public static void XMLStudentWriter(Student s){
         try {
             FileOutputStream fos = new FileOutputStream(new File("Students/" + s.getFacultyNumber() + ".xml"));
+            XMLEncoder encoder = new XMLEncoder(fos);
+            encoder.writeObject(s);
+            encoder.close();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+    //Save at custom filepath
+    public static void XMLStudentWriter(Student s,String pathname){
+        try {
+            FileOutputStream fos = new FileOutputStream(new File(pathname));
             XMLEncoder encoder = new XMLEncoder(fos);
             encoder.writeObject(s);
             encoder.close();

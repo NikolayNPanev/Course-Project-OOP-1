@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Major.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/DisciplineFactory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/FileIO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Professor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Professor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/FileIO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/FileIO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/Menu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -68,7 +75,10 @@
       <option name="presentableId" value="Default" />
       <updated>1650317722829</updated>
       <workItem from="1650317726621" duration="27992000" />
-      <workItem from="1651580436622" duration="10361000" />
+      <workItem from="1651580436622" duration="11040000" />
+      <workItem from="1652192443265" duration="4728000" />
+      <workItem from="1652448111634" duration="1599000" />
+      <workItem from="1652788274435" duration="8680000" />
     </task>
     <servers />
   </component>

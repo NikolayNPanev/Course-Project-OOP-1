@@ -6,9 +6,14 @@ import static sit.tu_varna.bg.Menu.menu;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Student kolyo = new Student("20621511","SIT",1,"Kolyo");
-        XMLStudentWriter(kolyo);
-        XMLStudentParser("Students/20621511.xml");
+
+        Major KST = new Major("KST");
+        Discipline MPT = new Discipline("MPT");
+        KST.addDiscipline(MPT);
+        Menu.majors.add(KST);
+        Student kolyo = new Student("1",KST,1,"Ivan");
+        Menu.students.add(kolyo);
+        System.out.println(kolyo);
         menu();
     }
 }

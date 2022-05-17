@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="18.0.1" class="java.beans.XMLDecoder">
+ <object class="sit.tu_varna.bg.Student">
+  <void property="facultyNumber">
+   <string>1</string>
+  </void>
+  <void property="group">
+   <int>1</int>
+  </void>
+  <void property="name">
+   <string>Ivan</string>
+  </void>
+ </object>
+</java>
