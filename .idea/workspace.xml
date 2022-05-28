@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="" />
+    <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +78,7 @@
       <workItem from="1652192443265" duration="4728000" />
       <workItem from="1652448111634" duration="1599000" />
       <workItem from="1652788274435" duration="15965000" />
-      <workItem from="1652867905748" duration="25012000" />
+      <workItem from="1652867905748" duration="25948000" />
     </task>
     <servers />
   </component>

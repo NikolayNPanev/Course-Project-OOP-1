@@ -27,6 +27,7 @@ public class Menu {
         System.out.println("advance <faculty number>                              //advance student to the next year");
         System.out.println("graduate <faculty number>                             //graduates a student");
         System.out.println("protocol <major>                                      //creates a protocol of all active students in the specialty");
+        System.out.println("report <faculty number>                               //creates a report on a student's grade");
         System.out.println("exit                                                  //exits the program" +
                 "\n===================================");
     }
@@ -117,7 +118,7 @@ public class Menu {
         }
     }
 
-    public static void major(String[] command){
+    private static void major(String[] command){
         if(command.length<3){
             invalidSyntax();
             menu();
@@ -282,6 +283,25 @@ public class Menu {
         System.out.println("++++++++++++++++");
     }
 
+    private static void report(String[] command){
+        if(command.length<2){
+            invalidSyntax();
+            return;
+        }
+
+        for(Student student:students){
+            if(student.getFacultyNumber().equals(command[1])){
+                System.out.println(student.getName()+"{\n" +
+                        "faculty number: "+student.getFacultyNumber()+ "\n"+
+                        "average grade: "+student.averageGrade()+"\n");
+                for (Object grade : student.getGrades()){
+                    System.out.println(grade);
+                }
+                return;
+            }
+        }
+    }
+
     public static void menu() {
         Scanner sc = new Scanner(System.in);
 
@@ -303,6 +323,12 @@ public class Menu {
             case "?":
                 Help();
                 menu();
+                break;
+                //--------------------------------------------------------------------------------report
+            case "report":
+            case "Report":
+            case "REPORT":
+                report(command);
                 break;
                 //--------------------------------------------------------------------------------protocol
             case "protocol":
