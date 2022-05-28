@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Menu {
     public static List<Major> majors = new ArrayList<>();
     public static List<Student> students = new ArrayList<>();
-    private static DecimalFormat df = new DecimalFormat("#.##");
+    private static final DecimalFormat df = new DecimalFormat("#.##");
 
     private static void Help() {
         System.out.println("\n===================================" +
@@ -28,8 +28,138 @@ public class Menu {
         System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
     }
 
+    private static void discipline(String[] command) {
 
+        //check for syntax
+        if (command.length < 3) {
+            invalidSyntax();
+            menu();
+        }
 
+        //switch for "discipline" commands
+        switch (command[1]) {
+            //-----------------------------------remove discipline
+            case "remove" -> {
+                for (Major major : majors) {
+                    for (int i = 0; i < major.getDisciplines().size(); i++) {
+                        if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
+                            major.getDisciplines().remove(major.getDisciplines().get(i));
+                            System.out.println("Discipline successfully removed from this major!");
+                            menu();
+                        }
+                    }
+                }
+                System.err.println("This discipline doesn't exist");
+            }
+            //---------------------------------add discipline
+            case "add" -> {
+                Discipline D = new Discipline(command[2]);
+                for (Major major : majors) {
+                    for (int i = 0; i < major.getDisciplines().size(); i++) {
+                        if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
+                            System.err.println("Discipline already exists in this major!");
+                            menu();
+                        }
+                    }
+                }
+                for (Major major : majors) {
+                    if (major.getName().equals(command[3])) {
+                        major.addDiscipline(D);
+                        System.out.println("Discipline added successfully to this major!");
+                    }
+                }
+            }
+            default -> invalidSyntax();
+        }
+    }
+
+    public static void major(String[] command){
+        if(command.length<3){
+            invalidSyntax();
+            menu();
+        }
+
+        //switch for "major" commands
+        switch (command[1]) {
+            //---------------------------------add major
+            case "add" -> {
+                Major M = new Major(command[2]);
+                for (Major major : majors) {
+                    if (major.getName().equals(command[2])) {
+                        System.err.println("This major already exists!");
+                        menu();
+                    }
+                }
+                majors.add(M);
+                System.out.println("Major added!");
+            }
+            //------------------------------remove major
+            case "remove" -> {
+                for (Major major : majors) {
+                    if (major.getName().equals(command[2])) {
+                        majors.remove(major);
+                        System.out.println("Major removed!");
+                        menu();
+                    }
+                }
+                System.err.println("This major does not exist!");
+            }
+            default -> invalidSyntax();
+        }
+    }
+
+    private static void enroll(String[] command){
+        if(command.length<5){
+            invalidSyntax();
+            menu();
+        }
+        for (Student student: students){
+            if(student.getFacultyNumber().equals(command[1])){
+                System.err.println("A student with this faculty number already exists");
+                menu();
+            }
+        }
+        for(Major major: majors) {
+            if(command[2].equals(major.getName())) {
+                try {
+                    Student P = new Student(command[1], major, Integer.parseInt(command[3]), command[4]);
+                    students.add(P);
+                    System.out.println(P);
+                }catch (NumberFormatException e){
+                    invalidSyntax();
+                }
+
+                menu();
+            }
+        }
+        System.err.println("This major doesn't exist!");
+    }
+
+    private static void grade(String[] command){
+        if(command.length<4){
+            invalidSyntax();
+            menu();
+        }
+        for(Student student: students){
+            if(student.getFacultyNumber().equals(command[1])) {
+                for (Discipline discipline : student.getMajor().getDisciplines()) {
+                    if (discipline.getDisciplineName().equals(command[2])) {
+                        try {
+                            student.Grade(new Grade(discipline, Double.parseDouble(command[3])));
+                            System.out.println("Student graded successfully\n");
+                            student.showGrades();
+                        }catch (NumberFormatException e){
+                            invalidSyntax();
+                        }
+                        menu();
+                    }
+                }
+                System.err.println("This discipline is not part of this student's major");
+                menu();
+            }
+        }
+        System.err.println("Student with this faculty number doesn't exist");
+    }
 
     public static void menu() {
         Scanner sc = new Scanner(System.in);
@@ -42,6 +172,7 @@ public class Menu {
         switch(command[0]) {
             //------------------------------------------------------------------------------------------exit
             case "exit":
+                //exiting with code 0, stating successful termination of the program
                 System.exit(0);
                 break;
                 //-------------------------------------------------------------------------------------help
@@ -96,138 +227,23 @@ public class Menu {
             case "enroll":
             case "Enroll":
             case "ENROLL":
-                if(command.length<5){
-                        invalidSyntax();
-                       menu();
-                }
-                for (Student student: students){
-                    if(student.getFacultyNumber().equals(command[1])){
-                        System.err.println("A student with this faculty number already exists");
-                        menu();
-                    }
-                }
-                for(Major major: majors) {
-                    if(command[2].equals(major.getName())) {
-                        try {
-                            Student P = new Student(command[1], major, Integer.parseInt(command[3]), command[4]);
-                            students.add(P);
-                            System.out.println(P);
-                        }catch (NumberFormatException e){
-                            invalidSyntax();
-                        }
-
-                        menu();
-                    }
-                }
-                System.err.println("This major doesn't exist!");
+               enroll(command);
                 break;
 
             //-------------------------------------------------------------------------------------------major
             case "major":
-                //check for syntax
-                if(command.length<3){
-                    invalidSyntax();
-                    break;
-                }
-
-                //switch for "major" commands
-                switch(command[1]){
-                    //---------------------------------add major
-                    case "add":
-                        Major M = new Major(command[2]);
-                        for(Major major:majors){
-                            if(major.getName().equals(command[2])) {
-                                System.err.println("This major already exists!");
-                                menu();
-                            }
-                        }
-                        majors.add(M);
-                        System.out.println("Major added!");
-                        break;
-                        //------------------------------remove major
-                    case "remove":
-                        for(Major major:majors){
-                            if(major.getName().equals(command[2])) {
-                                majors.remove(major);
-                                System.out.println("Major removed!");
-                                menu();
-                            }
-                        }
-                        System.err.println("This major does not exist!");
-                        break;
-                    default:
-                        invalidSyntax();
-                }
+            case "Major":
+            case "MAJOR":
+               major(command);
                 break;
 
                 //------------------------------------------------------------------------------------discipline
             case "discipline":
-
-                //check for syntax
-                if(command.length<3){
-                    invalidSyntax();
-                    break;
-                }
-
-                //switch for "discipline" commands
-                switch (command[1]){
-                    //-----------------------------------remove discipline
-                    case "remove":
-                        for(Major major: majors) {
-                            for(int i=0;i<major.getDisciplines().size();i++) {
-                                if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])){
-                                   major.getDisciplines().remove(major.getDisciplines().get(i));
-                                    System.out.println("Discipline successfully removed from this major!");
-                                    menu();
-                                }
-                            }
-                        }
-                        System.err.println("This discipline doesn't exist");
-                        break;
-                        //---------------------------------add discipline
-                    case "add":
-                                Discipline D = new Discipline(command[2]);
-                                for(Major major: majors) {
-                                    for(int i=0;i<major.getDisciplines().size();i++) {
-                                        if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])){
-                                            System.err.println("Discipline already exists in this major!");
-                                            menu();
-                                        }
-                                    }
-                                }
-                                for(Major major: majors){
-                                    if(major.getName().equals(command[3])){
-                                        major.addDiscipline(D);
-                                        System.out.println("Discipline added successfully to this major!");
-                                    }
-                                }
-                                break;
-                    default:
-                        invalidSyntax();
-                        break;
-                }
+                discipline(command);
                 break;
                 //-------------------------------------------------------------------------------------grade
             case "grade":
-                    if(command.length<4){
-                        invalidSyntax();
-                        menu();
-                    }
-                    for(Student student: students){
-                        if(student.getFacultyNumber().equals(command[1])) {
-                            for (Discipline discipline : student.getMajor().getDisciplines()) {
-                                if (discipline.getDisciplineName().equals(command[2])) {
-                                    student.Grade(new Grade(discipline, Double.parseDouble(command[3])));
-                                    System.out.println("Student graded successfully\n");
-                                    student.showGrades();
-                                    menu();
-                                }
-                            }
-                            System.err.println("This discipline is not part of this student's major");
-                            menu();
-                        }
-                    }
-                System.err.println("Student with this faculty number doesn't exist");
+                   grade(command);
                 break;
                 //-------------------------------------------------------------------------------------default
             default:
