@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Major.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Major.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <workItem from="1652192443265" duration="4728000" />
       <workItem from="1652448111634" duration="1599000" />
       <workItem from="1652788274435" duration="15965000" />
-      <workItem from="1652867905748" duration="17846000" />
+      <workItem from="1652867905748" duration="18590000" />
     </task>
     <servers />
   </component>
