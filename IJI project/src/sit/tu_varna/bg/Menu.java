@@ -269,7 +269,10 @@ public class Menu {
                 break;
             }
         }
-        if(!exists) return;
+        if(!exists) {
+            System.err.println("This major doesn't exist!");
+            return;
+        }
 
         for(Student student:students){
             if(student.getMajor().getName().equals(command[1])&& !student.isGraduated()){
