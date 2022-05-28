@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8f0951cf-52f6-452d-ba04-372de9e02755" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Discipline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/IJI project/src/sit/tu_varna/bg/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Course-Project-OOP-1/sit/tu_varna/bg/Menu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="27zKxkxtSpVk4Niy9WFVAdNAhPh" />
   <component name="ProjectViewState">
@@ -74,7 +80,8 @@
       <workItem from="1651580436622" duration="11040000" />
       <workItem from="1652192443265" duration="4728000" />
       <workItem from="1652448111634" duration="1599000" />
-      <workItem from="1652788274435" duration="15011000" />
+      <workItem from="1652788274435" duration="15965000" />
+      <workItem from="1652867905748" duration="10584000" />
     </task>
     <servers />
   </component>

@@ -9,8 +9,6 @@ public class Student extends Person{
     private Major major;
     private List<Grade> grades = new ArrayList<>();
 
-//constructor za suzdavane na Student samo s lichno i familno ime, kakto i takuv s 3 imena
-
     public void Grade(Grade grade){
         grades.add(grade);
     }
@@ -23,6 +21,18 @@ public class Student extends Person{
 
     public List getGrades(){
         return grades;
+    }
+
+    public double averageGrade(){
+
+        double averageGrade=0;
+        int i=0;
+        for (Grade grade:grades){
+            averageGrade+=grade.getGrade();
+            i++;
+        }
+        averageGrade/=i;
+        return averageGrade;
     }
 
     public Student(String facultyNumber,Major major, int group,String name) {

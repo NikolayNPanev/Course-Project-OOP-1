@@ -1,4 +1,5 @@
 package sit.tu_varna.bg;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,6 +7,7 @@ import java.util.Scanner;
 public class Menu {
     public static List<Major> majors = new ArrayList<>();
     public static List<Student> students = new ArrayList<>();
+    private static DecimalFormat df = new DecimalFormat("#.##");
 
     private static void Help() {
         System.out.println("\n===================================" +
@@ -18,8 +20,12 @@ public class Menu {
                 "\n     add <discipline name> <major name>             //adds a discipline to a major");
         System.out.println("     remove <discipline name> <major name>          //removes a discipline from a major");
         System.out.println("grade <faculty number> <discipline> <grade>         //gives a student a grade");
-        System.out.println("exit                                               //exits the program" +
+        System.out.println("average grade <faculty number>                      //displays a student's average grade");
+        System.out.println("exit                                                //exits the program" +
                 "\n===================================");
+    }
+    private static void invalidSyntax(){
+        System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
     }
 
 
@@ -47,13 +53,51 @@ public class Menu {
                 menu();
                 break;
 
+                //-------------------------------------------------------------------------------------average grade
+            case "average":
+            case "Average":
+            case "AVERAGE":
+                if(command.length==3) {
+                    if (command[1].equals("grade") || command[1].equals("Grade") || command[1].equals("GRADE")) {
+                        for (Student student : students) {
+                            if (student.getFacultyNumber().equals(command[2])) {
+                                System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
+                                menu();
+
+                            }
+                        }
+                        System.err.println("A student with this faculty number doesnt exist!");
+                    } else {
+                        invalidSyntax();
+                    }
+                }else {
+                    invalidSyntax();
+                }
+                break;
+            case "averagegrade":
+            case "Averagegrade":
+            case "AVERAGEGRADE":
+                if(command.length==2) {
+                    for (Student student : students) {
+
+
+                        if (student.getFacultyNumber().equals(command[1])) {
+                            System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
+                            menu();
+                        }
+                    }
+                }else{
+                    invalidSyntax();
+                }
+                break;
+
 
             //-----------------------------------------------------------------------------------------enroll
             case "enroll":
             case "Enroll":
             case "ENROLL":
                 if(command.length<5){
-                        System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                        invalidSyntax();
                        menu();
                 }
                 for (Student student: students){
@@ -64,9 +108,14 @@ public class Menu {
                 }
                 for(Major major: majors) {
                     if(command[2].equals(major.getName())) {
-                        Student P = new Student(command[1], major, Integer.parseInt(command[3]),command[4]);
-                        students.add(P);
-                        System.out.println(P);
+                        try {
+                            Student P = new Student(command[1], major, Integer.parseInt(command[3]), command[4]);
+                            students.add(P);
+                            System.out.println(P);
+                        }catch (NumberFormatException e){
+                            invalidSyntax();
+                        }
+
                         menu();
                     }
                 }
@@ -77,7 +126,7 @@ public class Menu {
             case "major":
                 //check for syntax
                 if(command.length<3){
-                    System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                    invalidSyntax();
                     break;
                 }
 
@@ -107,7 +156,7 @@ public class Menu {
                         System.err.println("This major does not exist!");
                         break;
                     default:
-                        System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                        invalidSyntax();
                 }
                 break;
 
@@ -116,7 +165,7 @@ public class Menu {
 
                 //check for syntax
                 if(command.length<3){
-                    System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                    invalidSyntax();
                     break;
                 }
 
@@ -154,27 +203,31 @@ public class Menu {
                                 }
                                 break;
                     default:
-                        System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                        invalidSyntax();
                         break;
                 }
                 break;
                 //-------------------------------------------------------------------------------------grade
             case "grade":
                     if(command.length<4){
-                        System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+                        invalidSyntax();
                         menu();
                     }
                     for(Student student: students){
-                        int i =0;
-                        for(Discipline discipline:student.getMajor().getDisciplines() ){
-                            if(discipline.getDisciplineName().equals(command[2])){
-                                student.Grade(new Grade(discipline,Double.parseDouble(command[3])));
-                                System.out.println("Student graded successfully\n");
-                                student.showGrades();
+                        if(student.getFacultyNumber().equals(command[1])) {
+                            for (Discipline discipline : student.getMajor().getDisciplines()) {
+                                if (discipline.getDisciplineName().equals(command[2])) {
+                                    student.Grade(new Grade(discipline, Double.parseDouble(command[3])));
+                                    System.out.println("Student graded successfully\n");
+                                    student.showGrades();
+                                    menu();
+                                }
                             }
-                            i++;
+                            System.err.println("This discipline is not part of this student's major");
+                            menu();
                         }
                     }
+                System.err.println("Student with this faculty number doesn't exist");
                 break;
                 //-------------------------------------------------------------------------------------default
             default:
