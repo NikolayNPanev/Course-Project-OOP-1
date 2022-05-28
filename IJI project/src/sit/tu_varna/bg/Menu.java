@@ -22,6 +22,7 @@ public class Menu {
                 "\n     add <discipline name> <major name> <mandatory(true/false)> <year>//adds a discipline to a major");
         System.out.println("     remove <discipline name> <major name> <year>     //removes a discipline from a major");
         System.out.println("grade <faculty number> <discipline> <grade>           //gives a student a grade");
+        System.out.println("      change <faculty number> <discipline> <grade>    //changes a student's grade");
         System.out.println("average grade <faculty number>                        //displays a student's average grade");
         System.out.println("advance <faculty number>                              //advance student to the next year");
         System.out.println("exit                                                  //exits the program" +
@@ -88,6 +89,9 @@ public class Menu {
                                 System.out.println("Discipline added successfully to this major!");
                             }
                         }
+                    }
+                    else{
+                        invalidSyntax();
                     }
                 }else {
                     invalidSyntax();
@@ -164,6 +168,27 @@ public class Menu {
             invalidSyntax();
             menu();
         }
+        if(command[1].equals("change")||command[1].equals("Change")||command[1].equals("CHANGE")){
+            if(command.length<5){
+                invalidSyntax();
+                menu();
+            }
+            for(Student student: students){
+                if(student.getFacultyNumber().equals(command[2])){
+                    for(Discipline discipline: student.getMajor().getDisciplines(student.getYear())) {
+                        if(discipline.getDisciplineName().equals(command[3])) {
+                            student.changeGrade(discipline, Double.parseDouble(command[4]));
+                            return;
+                        }
+                    }
+                    System.err.println("Student doesn't have this discipline");
+                    return;
+                }
+            }
+            System.err.println("Student with this faculty number doesn't exist");
+            return;
+        }
+
         for(Student student: students){
             if(student.getFacultyNumber().equals(command[1])) {
                 for (Discipline discipline : student.getMajor().getDisciplines(student.getYear())) {

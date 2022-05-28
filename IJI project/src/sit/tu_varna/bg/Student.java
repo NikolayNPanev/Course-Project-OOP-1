@@ -14,6 +14,17 @@ public class Student extends Person{
         return year;
     }
 
+    public void changeGrade(Discipline discipline, double grade){
+        for(Grade grd:grades){
+            if(grd.getDiscipline()== discipline){
+                grd.setGrade(grade);
+                System.out.println("Grade changed successfully!");
+                return;
+            }
+        }
+        System.err.println("Student hasn't been graded in this discipline yet!");
+    }
+
     public void Grade(Grade grade){
         for(Grade grd: grades){
             if(grd.getDiscipline()== grade.getDiscipline()){
