@@ -24,6 +24,7 @@ public class Menu {
         System.out.println("exit                                                //exits the program" +
                 "\n===================================");
     }
+
     private static void invalidSyntax(){
         System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
     }
@@ -161,6 +162,36 @@ public class Menu {
         System.err.println("Student with this faculty number doesn't exist");
     }
 
+    private static void averageGrade(String[] command){
+        if(command.length==3) {
+            if (command[1].equals("grade") || command[1].equals("Grade") || command[1].equals("GRADE")) {
+                for (Student student : students) {
+                    if (student.getFacultyNumber().equals(command[2])) {
+                        System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
+                        menu();
+
+                    }
+                }
+                System.err.println("A student with this faculty number doesnt exist!");
+            } else {
+                invalidSyntax();
+            }
+            menu();
+        }
+        if(command.length==2) {
+            for (Student student : students) {
+
+
+                if (student.getFacultyNumber().equals(command[1])) {
+                    System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
+                    menu();
+                }
+            }
+        }else{
+            invalidSyntax();
+        }
+    }
+
     public static void menu() {
         Scanner sc = new Scanner(System.in);
 
@@ -183,60 +214,27 @@ public class Menu {
                 Help();
                 menu();
                 break;
-
                 //-------------------------------------------------------------------------------------average grade
             case "average":
             case "Average":
             case "AVERAGE":
-                if(command.length==3) {
-                    if (command[1].equals("grade") || command[1].equals("Grade") || command[1].equals("GRADE")) {
-                        for (Student student : students) {
-                            if (student.getFacultyNumber().equals(command[2])) {
-                                System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
-                                menu();
-
-                            }
-                        }
-                        System.err.println("A student with this faculty number doesnt exist!");
-                    } else {
-                        invalidSyntax();
-                    }
-                }else {
-                    invalidSyntax();
-                }
-                break;
             case "averagegrade":
             case "Averagegrade":
             case "AVERAGEGRADE":
-                if(command.length==2) {
-                    for (Student student : students) {
-
-
-                        if (student.getFacultyNumber().equals(command[1])) {
-                            System.out.println(student.getFacultyNumber() + ": " + df.format(student.averageGrade()));
-                            menu();
-                        }
-                    }
-                }else{
-                    invalidSyntax();
-                }
+                averageGrade(command);
                 break;
-
-
             //-----------------------------------------------------------------------------------------enroll
             case "enroll":
             case "Enroll":
             case "ENROLL":
                enroll(command);
                 break;
-
             //-------------------------------------------------------------------------------------------major
             case "major":
             case "Major":
             case "MAJOR":
                major(command);
                 break;
-
                 //------------------------------------------------------------------------------------discipline
             case "discipline":
                 discipline(command);
@@ -252,10 +250,4 @@ public class Menu {
         }
         menu();
     }
-
-
-
-
-
-
 }

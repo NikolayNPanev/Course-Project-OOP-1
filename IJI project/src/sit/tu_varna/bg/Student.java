@@ -79,8 +79,4 @@ public class Student extends Person{
                 "  group: "+getGroup()+"\n" +
                 "}";
     }
-
-
-
-    }
-
+ }

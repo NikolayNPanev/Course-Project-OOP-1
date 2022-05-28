@@ -15,5 +15,4 @@ public class Discipline {
     public void setDisciplineName(String disciplineName) {
         this.disciplineName = disciplineName;
     }
-
 }
