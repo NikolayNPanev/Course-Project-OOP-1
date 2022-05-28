@@ -26,6 +26,7 @@ public class Menu {
         System.out.println("average grade <faculty number>                        //displays a student's average grade");
         System.out.println("advance <faculty number>                              //advance student to the next year");
         System.out.println("graduate <faculty number>                             //graduates a student");
+        System.out.println("protocol <major>                                      //creates a protocol of all active students in the specialty");
         System.out.println("exit                                                  //exits the program" +
                 "\n===================================");
     }
@@ -254,6 +255,30 @@ public class Menu {
         }
     }
 
+    private static void protocol(String[] command){
+        boolean exists = false;
+        if(command.length<2){
+            invalidSyntax();
+            return;
+        }
+        for(Major major:majors){
+            if(major.getName().equals(command[1])){
+                exists = true;
+                System.out.println("++++++++++++++++");
+                System.out.println(major.getName());
+                break;
+            }
+        }
+        if(!exists) return;
+
+        for(Student student:students){
+            if(student.getMajor().getName().equals(command[1])&& !student.isGraduated()){
+                System.out.println(student);
+            }
+        }
+        System.out.println("++++++++++++++++");
+    }
+
     public static void menu() {
         Scanner sc = new Scanner(System.in);
 
@@ -275,6 +300,12 @@ public class Menu {
             case "?":
                 Help();
                 menu();
+                break;
+                //--------------------------------------------------------------------------------protocol
+            case "protocol":
+            case "Protocol":
+            case "PROTOCOL":
+                protocol(command);
                 break;
                 //--------------------------------------------------------------------------------graduate
             case "graduate":

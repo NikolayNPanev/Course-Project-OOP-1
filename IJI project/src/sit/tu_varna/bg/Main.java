@@ -24,7 +24,7 @@ public class Main {
         ivan.advance();
         ivan.advance();
         ivan.Grade(new Grade(ASLS,5.00));
-        ivan.graduate();
+        //ivan.graduate();
         Menu.students.add(ivan);
         System.out.println(ivan);
         menu();
