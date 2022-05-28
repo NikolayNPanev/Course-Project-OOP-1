@@ -25,12 +25,27 @@ public class Menu {
         System.out.println("      change <faculty number> <discipline> <grade>    //changes a student's grade");
         System.out.println("average grade <faculty number>                        //displays a student's average grade");
         System.out.println("advance <faculty number>                              //advance student to the next year");
+        System.out.println("graduate <faculty number>                             //graduates a student");
         System.out.println("exit                                                  //exits the program" +
                 "\n===================================");
     }
 
     private static void invalidSyntax(){
         System.err.println("Invalid syntax! Type \"help\" or \"?\" for a list of commands");
+    }
+
+    private static void graduate(String[] command){
+        if(command.length<2){
+            invalidSyntax();
+            return;
+        }
+        for(Student student: students){
+            if(student.getFacultyNumber().equals(command[1])){
+                student.graduate();
+                return;
+            }
+        }
+        System.err.println("Student with this faculty number doesn't exist");
     }
 
     private static void advance(String[] command){
@@ -260,6 +275,12 @@ public class Menu {
             case "?":
                 Help();
                 menu();
+                break;
+                //--------------------------------------------------------------------------------graduate
+            case "graduate":
+            case "Graduate":
+            case "GRADUATE":
+                graduate(command);
                 break;
            //-------------------------------------------------------------------------------------advance
             case "advance":
