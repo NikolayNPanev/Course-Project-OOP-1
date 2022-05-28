@@ -23,11 +23,11 @@ public class Menu {
         System.out.println("     remove <discipline name> <major name> <year>     //removes a discipline from a major");
         System.out.println("grade <faculty number> <discipline> <grade>           //gives a student a grade");
         System.out.println("      change <faculty number> <discipline> <grade>    //changes a student's grade");
-        System.out.println("average grade <faculty number>                        //displays a student's average grades");
+        System.out.println("average grade <faculty number>                        //displays a student's average grade");
         System.out.println("advance <faculty number>                              //advance student to the next year");
         System.out.println("graduate <faculty number>                             //graduates a student");
         System.out.println("protocol <major>                                      //creates a protocol of all active students in the specialty");
-        System.out.println("report <faculty number>                               //creates a report on a student's grade");
+        System.out.println("report <faculty number>                               //creates a report on a student's grades");
         System.out.println("exit                                                  //exits the program" +
                 "\n===================================");
     }
