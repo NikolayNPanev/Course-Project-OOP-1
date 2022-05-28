@@ -5,9 +5,19 @@ import java.util.List;
 
 public class Discipline {
     private String disciplineName;
+    private boolean isMandatory;
 
-    public Discipline( String disciplineName) {
+    public boolean isMandatory() {
+        return isMandatory;
+    }
+
+    public void setMandatory(boolean mandatory) {
+        isMandatory = mandatory;
+    }
+
+    public Discipline(String disciplineName, boolean isMandatory) {
         this.disciplineName = disciplineName;
+        this.isMandatory = isMandatory;
     }
 
     public String getDisciplineName() {return disciplineName;}

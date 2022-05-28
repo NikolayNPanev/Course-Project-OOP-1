@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Boolean.parseBoolean;
+
 public class Menu {
     public static List<Major> majors = new ArrayList<>();
     public static List<Student> students = new ArrayList<>();
@@ -12,16 +14,16 @@ public class Menu {
     private static void Help() {
         System.out.println("\n===================================" +
                 "\nLIST OF COMMANDS:");
-        System.out.println("enroll <fn> <major> <group> <name>                  //enrolls a student");
+        System.out.println("enroll <fn> <major> <group> <name>                    //enrolls a student");
         System.out.println("major " +
-                "\n     add <major name>                               //creates a major");
-        System.out.println("     remove <major name>                            //removes a major");
+                "\n     add <major name>                                 //creates a major");
+        System.out.println("     remove <major name>                              //removes a major");
         System.out.println("discipline " +
-                "\n     add <discipline name> <major name>             //adds a discipline to a major");
-        System.out.println("     remove <discipline name> <major name>          //removes a discipline from a major");
-        System.out.println("grade <faculty number> <discipline> <grade>         //gives a student a grade");
-        System.out.println("average grade <faculty number>                      //displays a student's average grade");
-        System.out.println("exit                                                //exits the program" +
+                "\n     add <discipline name> <major name> <mandatory(true/false)> <year>//adds a discipline to a major");
+        System.out.println("     remove <discipline name> <major name> <year>     //removes a discipline from a major");
+        System.out.println("grade <faculty number> <discipline> <grade>           //gives a student a grade");
+        System.out.println("average grade <faculty number>                        //displays a student's average grade");
+        System.out.println("exit                                                  //exits the program" +
                 "\n===================================");
     }
 
@@ -32,7 +34,7 @@ public class Menu {
     private static void discipline(String[] command) {
 
         //check for syntax
-        if (command.length < 3) {
+        if (command.length < 4) {
             invalidSyntax();
             menu();
         }
@@ -42,9 +44,9 @@ public class Menu {
             //-----------------------------------remove discipline
             case "remove" -> {
                 for (Major major : majors) {
-                    for (int i = 0; i < major.getDisciplines().size(); i++) {
-                        if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
-                            major.getDisciplines().remove(major.getDisciplines().get(i));
+                    for (int i = 0; i < major.getDisciplines(Integer.parseInt(command[3])).size(); i++) {
+                        if (major.getDisciplines(Integer.parseInt(command[3])).get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
+                            major.getDisciplines(Integer.parseInt(command[3])).remove(major.getDisciplines(Integer.parseInt(command[3])).get(i));
                             System.out.println("Discipline successfully removed from this major!");
                             menu();
                         }
@@ -54,20 +56,27 @@ public class Menu {
             }
             //---------------------------------add discipline
             case "add" -> {
-                Discipline D = new Discipline(command[2]);
-                for (Major major : majors) {
-                    for (int i = 0; i < major.getDisciplines().size(); i++) {
-                        if (major.getDisciplines().get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
-                            System.err.println("Discipline already exists in this major!");
-                            menu();
+                if (command.length == 6) {
+                    if (command[4].equals("true") || command[4].equals("false") || command[4].equals("TRUE") || command[4].equals("FALSE") || command[4].equals("1") || command[4].equals("0") || command[4].equals("True") || command[4].equals("False")) {
+                        Discipline D = new Discipline(command[2], Boolean.parseBoolean(command[4]));
+
+                        for (Major major : majors) {
+                            for (int i = 0; i < major.getDisciplines(Integer.parseInt(command[4])).size(); i++) {
+                                if (major.getDisciplines(Integer.parseInt(command[4])).get(i).getDisciplineName().equals(command[2]) && major.getName().equals(command[3])) {
+                                    System.err.println("Discipline already exists in this major!");
+                                    menu();
+                                }
+                            }
+                        }
+                        for (Major major : majors) {
+                            if (major.getName().equals(command[3])) {
+                                major.addDiscipline(D,Integer.parseInt(command[4]));
+                                System.out.println("Discipline added successfully to this major!");
+                            }
                         }
                     }
-                }
-                for (Major major : majors) {
-                    if (major.getName().equals(command[3])) {
-                        major.addDiscipline(D);
-                        System.out.println("Discipline added successfully to this major!");
-                    }
+                }else {
+                    invalidSyntax();
                 }
             }
             default -> invalidSyntax();
@@ -143,12 +152,11 @@ public class Menu {
         }
         for(Student student: students){
             if(student.getFacultyNumber().equals(command[1])) {
-                for (Discipline discipline : student.getMajor().getDisciplines()) {
+                for (Discipline discipline : student.getMajor().getDisciplines(student.getYear())) {
                     if (discipline.getDisciplineName().equals(command[2])) {
                         try {
                             student.Grade(new Grade(discipline, Double.parseDouble(command[3])));
-                            System.out.println("Student graded successfully\n");
-                            student.showGrades();
+
                         }catch (NumberFormatException e){
                             invalidSyntax();
                         }

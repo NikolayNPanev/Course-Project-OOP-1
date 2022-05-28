@@ -8,12 +8,47 @@ public class Student extends Person{
     private int group;
     private Major major;
     private List<Grade> grades = new ArrayList<>();
+    private int year;
+
+    public int getYear() {
+        return year;
+    }
 
     public void Grade(Grade grade){
-        grades.add(grade);
+        if(grade.getGrade()>=2&&grade.getGrade()<=6) {
+            grades.add(grade);
+            System.out.println(grade);
+            System.out.println("Student graded successfully\n");
+            return;
+        }
+        System.err.println("Grades must be between 2.00 and 6.00!");
+    }
+
+    public void advance(){
+        if(grades.isEmpty()){
+            System.err.println("This student hasn't been graded yet!");
+            return;
+        }
+        for(Grade grade: grades){
+            if(grade.getGrade()<3 && grade.getDiscipline().isMandatory()) {
+                System.err.println("This student has failed one or more  mandatory classes and cannot advance!");
+                return;
+            }
+        }
+        if(year<4){
+            year++;
+            System.out.println("Student has advanced to the next year!");
+            return;
+        }
+        System.out.println("Student has graduated!");
+        year = 4;
     }
 
     public void showGrades(){
+        if(grades.isEmpty()){
+            System.err.println("This student hasn't been graded yet!");
+            return;
+        }
         for (Grade grade:grades){
             System.out.println(grade);
         }
@@ -41,6 +76,7 @@ public class Student extends Person{
         this.group = group;
         this.facultyNumber = facultyNumber;
         this.major = major;
+        this.year = 1;
     }
 
     public Student() {
@@ -76,6 +112,7 @@ public class Student extends Person{
                 "  name: "+getName()+"\n" +
                 "  faculty number: "+getFacultyNumber()+"\n" +
                 "  major: "+getMajor().getName()+"\n" +
+                "  year: " + getYear()+"\n" +
                 "  group: "+getGroup()+"\n" +
                 "}";
     }
