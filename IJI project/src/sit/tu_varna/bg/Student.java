@@ -15,6 +15,12 @@ public class Student extends Person{
     }
 
     public void Grade(Grade grade){
+        for(Grade grd: grades){
+            if(grd.getDiscipline()== grade.getDiscipline()){
+                System.err.println("Student already has a grade in this discipline!");
+                return;
+            }
+        }
         if(grade.getGrade()>=2&&grade.getGrade()<=6) {
             grades.add(grade);
             System.out.println(grade);
