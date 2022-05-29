@@ -134,9 +134,6 @@ public class Student extends Person{
         this.major = major;
     }
 
-    public Student() {
-    }
-
     public String getFacultyNumber() {
         return facultyNumber;
     }

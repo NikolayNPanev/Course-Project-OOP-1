@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static java.lang.Boolean.parseBoolean;
 
-public class Menu {
+public abstract class Menu {
     public static List<Major> majors = new ArrayList<>();
     public static List<Student> students = new ArrayList<>();
     private static final DecimalFormat df = new DecimalFormat("#.##");
