@@ -85,7 +85,7 @@ public class Student extends Person{
         if(year >= 4){
             for(Grade grade : grades){
                 if(grade.getGrade()<3 && grade.getDiscipline().isMandatory()) {
-                    System.err.println("This student has failed one or more  mandatory classes and cannot graduate!");
+                    System.err.println("This student has failed one or more mandatory classes and cannot graduate!");
                     return;
                 }
             }

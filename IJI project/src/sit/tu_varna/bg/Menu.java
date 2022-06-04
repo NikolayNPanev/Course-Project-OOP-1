@@ -56,9 +56,10 @@ public abstract class Menu {
             return;
         }
         for (Student student:students){
-            if(student.getFacultyNumber().equals(command[1]))
+            if(student.getFacultyNumber().equals(command[1])) {
                 student.advance();
-            return;
+                return;
+            }
         }
         System.out.println("A student with this faculty number doesn't exist!");
     }
